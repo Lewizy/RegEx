@@ -75,27 +75,24 @@ let alphabetRegex = /[a-z]/gi;
 let result = quoteSample.match(alphabetRegex); 
 
 //Match all letters and numbers: //////////////////////////////////////////////////////////////////////////////
-
 let jennyStr = "Jenny8675309";
 let myRegex = /[a-z0-9]/ig;
 jennyStr.match(myRegex);
 
 let quoteSample = "Blueberry 3.141592653s are delicious.";
 let myRegex = /[h-s2-6]/gi; 
-let result = quoteSample.match(myRegex); 
+log(quoteSample.match(myRegex));
 
 //Negated character sets ( ^ ) [caret]: ////////////////////////////////////////////////////////////////////////////
-
 // Note that characters like ., !, [, @, / 
 // and white space are matched - the negated vowel character set only excludes the vowel characters.
-
 let takeAwayAllVowels = "This sentence shall have no vowels.";
 let removeVowelsRegex = /[^aeiou0-9]/gi; 
-log(takeAwayAllVowels.match(removeVowelsRegex).join("")); 
+log(takeAwayAllVowels.match(removeVowelsRegex).join("")); //Ths sntnc shll hv n vwls.
 
-let takeOutAllLetter_Z = "Longz Livez Boomerz the dogz thatz boomsz";
+let takeOutAllLetter_Z = "ThisZ ZsentenceZz ZshallZz Zhave Znoz Zz";
 let removeZ = /[^z+]+/gi; // 
-log(takeOutAllLetter_Z.match(removeZ).join(""));
+log(takeOutAllLetter_Z.match(removeZ).join(""));//This sentence shall have no 
 
 let firstWordOfSentence = "Machalites are something or someone...?";
 let regexSearch1stWord = /^Machalites/gi;
@@ -109,8 +106,7 @@ let regexEndOfWord = /string$/g;
 log(endOftheWordStr.match(regexEndOfWord));
 
 
-//Match Characters that Occur One or More Times: ( + ) ////////////////////////////////////////////////////////////
-
+//Match Characters that Occur One or More Times: ( + ) //////////////////////////////////////////////////////////////////////
 let wordStr = "Mississipi";
 let findAll_s = /s+/g;
 log(wordStr.match(findAll_s));//[ 'ss', 'ss' ]
@@ -121,8 +117,8 @@ log(crowd.match(reCriminals));//[ 'CCC' ]
 let classMethodCriminals = /[c+]/gi;
 log(crowd.match(classMethodCriminals));//[ 'C', 'C', 'C' ]
 
-//Match Characters that Occur Zero or More Times: ( * ) /////////////////////////////////////////////////////////
 
+//Match Characters that Occur Zero or More Times: ( * ) //////////////////////////////////////////////////////////////////////
 let chewieQuote = "Aaaaaaaaaaaaaaaarrrgh!";
 let chewieRegex = /Aa*/g; // Change this line
 let result = chewieQuote.match(chewieRegex);
@@ -132,123 +128,56 @@ let text = "<h1>Winter is coming</h1>";
 let myRegex = /<[a-z0-9]*>/gi; // 
 log(text.match(myRegex));
 
-// //Short hand character classes ( \W ) = [A-Za-z0-9_]
-// The closest character class in JavaScript to match the alphabet is \w. This shortcut is equal to [A-Za-z0-9_]. 
-// This character class matches upper and lowercase letters plus numbers. 
-// Note, this character class also includes the underscore character (_).
-
-let characterClassesStr = "Count how many letters and numbers are in this string 45699";
+// //Short hand character classes ( \w ) = [A-Za-z0-9_] or "Alphanumerics" ////////////////////////////////////////////////////////
+let characterClassesStr = "Count how many letters and numbers 12345 are in this string";
 let regexCharacterClass = /[\w+]/g;
 log(characterClassesStr.match(regexCharacterClass).join(""));//Counthowmanylettersandnumbersareinthisstring45699
-log(characterClassesStr.match(regexCharacterClass).length);//
+log(characterClassesStr.match(regexCharacterClass).length);//49
 
-let longHand = /[A-Za-z0-9_]+/;
-let shortHand = /\w+/;
-let numbers = "42";
-let varNames = "important_var";
-longHand.test(numbers); // Returns true
-shortHand.test(numbers); // Returns true
-longHand.test(varNames); // Returns true
-shortHand.test(varNames); // Returns true
+let removeSpecialCharecters = "This $sentenc%e &is sha#$%ll Ha&*ve Only& lette#rs ans num@bers 123";
+let regexRemoveCharacters = /\w+/g;
+log(removeSpecialCharecters.match(regexRemoveCharacters).join(""));//ThissentenceisshallHaveOnlylettersansnumbers123
 
 
+// Match Everything that is non-alphanumeric ( \W ) = [!@#$%^&*(])_+{}:"|>?<[>-] : 
+// You can search for the opposite of the \w with \W. : Note, the opposite pattern uses a capital letter. 
+let displayNonAlphanumerics = "Thi$s $sen%tanc^e s&hal*l ha@ve only non-al+pha!2nu^m$er%ics";
+let regexDisplayNonAlphas = /[\W]/g;
+log(displayNonAlphanumerics.match(regexDisplayNonAlphas).join(""));//$ $%^ &* @  -+!^$%
 
 
+//Match all numbers with ( \d ) = [0-9] /////////////////////////////////////////////////////////////////////////////////////
+let displayallNumbers = "How much money is in this sentances $5.00";
+let regexGetNumbers = /\d/g;
+log(displayallNumbers.match(regexGetNumbers)); //[ '5', '0', '0' ]
 
+// Match all non-numbers with ( \D ) = [A-Za-z][!@#$%^&*(])_+{}:"|>?<[>-]
+let displayNonDigits = "There 4 shall 3 be 2 no 1 numbers 0 here ";
+let regexNonNumeric = /\D/g;
+log(displayNonDigits.match(regexNonNumeric).join(""));// There shall be no numbers here 
 
 
+//Match all white spaces ( \s ) /////////////////////////////////////////////////////////////////////////////////////////////
+let checkAllWhiteSpaces = "Display white spaces in this sentence";
+let regexDisplayWhiteSpace = /\s/g;
+log(checkAllWhiteSpaces.match(regexDisplayWhiteSpace).length); //5
 
 
+//Match all non-spaces ( \S )///////////////////////////////////////////////////////////////////////////////////////////////
+let checkNonSpaces = "Display non-spaces in this sentence 12345!@#%^&*(*";
+let regexNonSpace = /\S/g;
+log(checkNonSpaces.match(regexNonSpace).length); //45
 
 
 
+//CHALLENGES: ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+//Regular Expressions: Restrict Possible Usernames
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+let username = "JackOfAllTrades";
+let userCheck = /\w\D\d*/; // Change this line
+log(userCheck.test(username));
 
 
 
