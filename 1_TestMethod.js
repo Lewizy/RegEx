@@ -169,6 +169,83 @@ let regexNonSpace = /\S/g;
 log(checkNonSpaces.match(regexNonSpace).length); //45
 
 
+//Quantity Specifiers ( { , } )///////////////////////////////////////////////////////////////////////////////////////////////
+let ohStr = "Ohhh no";
+let ohRegex = /Oh{3,6}\sno/; // Change this line
+log(ohRegex.test(ohStr));//true
+
+let haStr = "Hazzzzah";
+let haRegex = /Hazz{3,}ah/; // Change this line
+log(haRegex.test(haStr)); //Hazzzzah
+
+let timStr = "Timmmmber";//four m's
+let timRegex = /Tim{4}ber/g; // Change this line
+log(timRegex.test(timStr));//Timmmmber
+
+//Match optional elements ( ? )//////////////////////////////////////////////////////////////////////////////////////////////////
+let american = "color";
+let british = "colour";
+let rainbowRegex= /colou?r/;
+rainbowRegex.test(american); // Returns true
+rainbowRegex.test(british); // Returns true
+
+let favWord = "favorite";
+let favRegex = /favo\w?rite/; // Change this line
+log(favRegex.test(favWord));
+
+//Look-aheads: Positive (?= ...) negetives (?! ...)/////////////////////////////////////////////////////////////////////////////
+
+let password = "abc123";
+let checkPass = /(?=\w{3,6})(?=\D*\d)/;
+checkPass.test(password); // Returns true
+
+//Use lookaheads in the pwRegex to match passwords that are greater than 5 characters long and have two consecutive digits.
+
+let sampleWord = "astronaut";
+let pwRegex = /(?=\w{5,})(?=\D*\d{2})/; // Change this line
+let result = pwRegex.test(sampleWord);
+
+//The repalce medthod ( replace( regex, replaceAnyText ) )//////////////////////////////////////////////////////////////////////////
+
+let replaceString = "Replace the word \'jumla'\ from this text";
+let regexReplace =/jumla/;
+let replaceWithThisText = "Nordstrum"
+log(replaceString.replace(regexReplace,replaceWithThisText));
+//Replace the word 'Nordstrum' from this text
+
+"Reverse word".replace(/(\w+)\s(\w+)/, '$2 $1');
+// Returns "word Reverse"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //CHALLENGES: ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
