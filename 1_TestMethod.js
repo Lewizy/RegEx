@@ -257,6 +257,11 @@ let userCheck = /\w\D\d*/; // Change this line
 log(userCheck.test(username));
 
 
+//Regular Expressions: Remove Whitespace from Start and End
+let hello = "   Hello, World!  ";
+let wsRegex = /^\s+(.+?)\s+$/ig; // Change this line
+let result = hello.replace(wsRegex,'$1'); // Change this line
+
 
 
 
