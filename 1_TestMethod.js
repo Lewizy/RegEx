@@ -217,36 +217,6 @@ log(replaceString.replace(regexReplace,replaceWithThisText));
 // Returns "word Reverse"
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //CHALLENGES: ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
